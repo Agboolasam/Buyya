@@ -7,8 +7,10 @@ async function seed() {
     await sql.sync({ force: true }); // Reset database
 
     //  Admin User
-    const adminPassword = await bcrypt.hash("admin123", 10);
+    const salt = bcrypt.genSalt(10);
+    const adminPassword = await bcrypt.hash("admin123", salt);
     await User.create({
+      fullName: "Admin User",
       email: "admin@buyya.com",
       password: adminPassword,
       role: "ADMIN",

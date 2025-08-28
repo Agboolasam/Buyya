@@ -7,6 +7,14 @@ const User = sql.define("User", {
     primaryKey: true,
     autoIncrement: true,
   },
+  fullName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      len: [2, 100],
+      notEmpty: true,
+    },
+  },
   email: {
     type: DataTypes.STRING,
     unique: true,
