@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sql from "../config/database";
+import sql from "../config/database.js";
 
 const User = sql.define("User", {
   id: {
@@ -20,6 +20,10 @@ const User = sql.define("User", {
   role: {
     type: DataTypes.ENUM("USER", "ADMIN"),
     defaultValue: "USER",
+  },
+  refreshToken: {
+    type: DataTypes.TEXT,
+    allowNull: true,
   },
 });
 
