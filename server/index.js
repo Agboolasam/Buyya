@@ -1,20 +1,27 @@
 import express from "express";
 import dotenv from "dotenv";
-import sql from "./config/database";
+import sql from "./models/model";
+import authRoutes from "./routes/authRoutes";
+import adminRoutes from "./routes/adminRoutes";
+import { verifyToken, isAdmin } from "./middlewares/auth";
 
 dotenv.config();
 const app = express();
 
 app.use(express.json());
 
+app.use("/api/auth", authRoutes);
+
+app.use("/api/admin", verifyToken, isAdmin, adminRoutes);
+
 const PORT = process.env.PORT || 5000;
 
 (async () => {
   try {
-    await sequelize.authenticate();
+    await sql.authenticate();
     console.log("Database connected");
 
-    await sequelize.sync({ alter: true });
+    await sql.sync({ alter: true });
     console.log("Database synced");
 
     app.listen(PORT, () => {
