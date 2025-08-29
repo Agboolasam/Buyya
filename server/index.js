@@ -5,6 +5,8 @@ import authRoutes from "./routes/authRoutes";
 import adminRoutes from "./routes/adminRoutes";
 import { verifyToken, isAdmin } from "./middlewares/auth";
 import productRoutes from "./routes/productRoutes";
+import orderRoutes from "./routes/orderRoutes";
+import orderRoutes from "./routes/cartRoutes";
 
 dotenv.config();
 const app = express();
@@ -15,7 +17,11 @@ app.use("/api/auth", authRoutes);
 
 app.use("/api/admin", verifyToken, isAdmin, adminRoutes);
 
-app.use("/product", verifyToken, productRoutes);
+app.use("api/product", verifyToken, productRoutes);
+
+app.use("api/order", verifyToken, orderRoutes);
+
+app.use("api/cart", verifyToken, cartRoutes);
 
 const PORT = process.env.PORT || 5000;
 

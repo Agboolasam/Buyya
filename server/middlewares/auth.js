@@ -59,8 +59,8 @@ const verifyToken = (req, res, next) => {
         await user.save();
         user.accessToken = newAccessToken;
 
-        res.locals.accessToken = newAccessToken;
-        res.locals.RefreshToken = newRefreshToken;
+        res.setHeader("x-access-token", newAccessToken);
+        res.setHeader("x-refresh-token", newRefreshToken);
         req.user = user;
         next();
       } catch (err) {
