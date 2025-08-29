@@ -6,4 +6,5 @@ import CartItem from "./CartItem";
 import Order from "./Order";
 import OrderItem from "./OrderItem";
 
-export { sql, User, Product, Cart, CartItem, Order, OrderItem };
+export default sql;
+export { User, Product, Cart, CartItem, Order, OrderItem };
