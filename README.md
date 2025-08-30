@@ -3,6 +3,10 @@
 
 ## Tech Stack
 
+### Frontend Technologies
+ - **React Native(expo)**
+ - **axios** -For api calls
+
 ### Backend Technologies
 - **Node.js** - JavaScript runtime environment for server-side development
 - **Express.js** - Web application framework for building REST APIs
